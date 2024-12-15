@@ -1,0 +1,22 @@
+services:
+  user-service:
+    build:
+      context: ./user_service
+    ports:
+      - "50051:50051"
+    networks:
+      - grpc-network
+    restart: always
+
+  order-service:
+    build:
+      context: ./order_service
+    ports:
+      - "50052:50052"
+    networks:
+      - grpc-network
+    restart: always
+
+networks:
+  grpc-network:
+    driver: bridge
